@@ -7,14 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="clongulin" />
+        <module name="clongulinconfig" />
         <module name="clongulinconsumer" />
         <module name="clongulineureka" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="clongulin" target="1.8" />
+      <module name="clongulinconfig" target="1.8" />
       <module name="clongulinconsumer" target="1.8" />
       <module name="clongulineureka" target="1.8" />
+      <module name="clongulineurekaReplicas" target="1.8" />
       <module name="clongulinud" target="1.8" />
     </bytecodeTargetLevel>
   </component>

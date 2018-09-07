@@ -1,0 +1,32 @@
+logging:
+  path: logs/clongulinconfig/
+  level:
+    org:
+      springframework:
+        data: DEBUG
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n'
+
+server:
+  port: 8091
+spring:
+  application:
+    name: clongulinconfig
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ldl729066951/clongulinudconfig.git
+          search-paths: consumer
+        default-application-name: clongulinconfig
+      label: master
+      username: ldl729066951
+      password: ldl1535934684..0
+HOST_NAME: localhost
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${HOST_NAME}:${server.port}
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka

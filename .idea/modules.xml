@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/clongulin/clongulin.iml" filepath="$PROJECT_DIR$/clongulin/clongulin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clongulinconfig/clongulinconfig.iml" filepath="$PROJECT_DIR$/clongulinconfig/clongulinconfig.iml" />
       <module fileurl="file://$PROJECT_DIR$/clongulinconsumer/clongulinconsumer.iml" filepath="$PROJECT_DIR$/clongulinconsumer/clongulinconsumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/clongulineureka/clongulineureka.iml" filepath="$PROJECT_DIR$/clongulineureka/clongulineureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/clongulinud.iml" filepath="$PROJECT_DIR$/clongulinud.iml" />

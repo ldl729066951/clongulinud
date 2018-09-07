@@ -3,7 +3,9 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/clongulin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/clongulinconfig" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/clongulinconsumer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/clongulineureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/clongulineurekaReplicas" charset="UTF-8" />
   </component>
 </project>
