@@ -1,6 +1,8 @@
 package com.castor.controllers;
 
+import com.castor.api.interfaces.DemoController;
 import com.castor.dtos.DemoLombok;
+import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -22,6 +24,9 @@ public class ConsumerController {
 
 	@Value("${active}")
 	private String active;
+
+	@Autowired
+	DemoController demoController;
 
 	@GetMapping("/consume")
 	public Object consume(){
@@ -58,5 +63,7 @@ public class ConsumerController {
 	public Object getConfig(){
 		return "active:"+active;
 	}
+
+
 
 }

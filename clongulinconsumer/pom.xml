@@ -27,7 +27,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- spring cloud eureka -->
+		<!-- spring cloud eureka 中包含了 ribbon-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -47,6 +47,9 @@
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 		<!-- spring cloud config end -->
+
+		<!-- spring cloud feign -->
+        <!-- spring cloud feign end -->
 	</dependencies>
 
 
