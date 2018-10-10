@@ -16,6 +16,7 @@
 		<module>clongulineureka</module>
 		<module>clongulinconsumer</module>
 		<module>clongulinconfig</module>
+		<module>clongulintest</module>
 	</modules>
 	
 	<parent>
