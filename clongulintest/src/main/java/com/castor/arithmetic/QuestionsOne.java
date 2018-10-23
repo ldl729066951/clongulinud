@@ -2,6 +2,8 @@ package com.castor.arithmetic;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class QuestionsOne {
 
@@ -35,8 +37,14 @@ public class QuestionsOne {
 	}
 
 	public static void main(String[] args) {
-		int[] res = new int[]{2, 7, 11, 15};
-		twoSum1(res, 9);
+
+		//^[+-]?\d*\.\d*$
+		//"^([1-9][0-9]*)(.[0-9]{0,1})?$";
+		String regExp = "^[1-9][0-9]*(\\.[0-9]{0,1})?$"; //n为小数位数
+		Pattern p = Pattern.compile(regExp);
+		Matcher m = p.matcher("00");
+		System.out.println(m.matches());
+
 	}
 
 }
