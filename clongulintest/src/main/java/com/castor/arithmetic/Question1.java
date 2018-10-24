@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class QuestionsOne {
+public class Question1 {
 
 	public int[] twoSum(int[] nums, int target) {
 		int[] res = null;
