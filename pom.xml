@@ -17,7 +17,8 @@
 		<module>clongulinconsumer</module>
 		<module>clongulinconfig</module>
 		<module>clongulintest</module>
-	</modules>
+		<module>clongulinzuul</module>
+    </modules>
 	
 	<parent>
 		<groupId>org.springframework.boot</groupId>

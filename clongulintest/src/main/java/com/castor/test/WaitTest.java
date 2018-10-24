@@ -5,27 +5,23 @@ class ThreadA extends Thread{
 		super(name);
 	}
 	@Override
-	public void run() {
-		 synchronized (this) {
-			System.out.println(Thread.currentThread().getName() + " call notify() begin");
-			this.notify();
-		 }
+	public synchronized void run() {
+		synchronized(ThreadA.class) {
+			for (int i = 0; i < 10; i++) {
+				System.out.printf("%s [%d]:%d\n", this.getName(), this.getPriority(), i);
+				if(i % 4 ==0){
+					Thread.yield();
+				}
+			}
+		}
 	}
 }
 
 public class WaitTest{
 	public static void main(String[] args) {
 		ThreadA t1 = new ThreadA("t1");
-		synchronized (t1) {
-            try {
-            	System.out.println(Thread.currentThread().getName() + " start t1");
-				t1.start();
-				System.out.println(Thread.currentThread().getName() + " wait()");
-                t1.wait();
-                System.out.println(Thread.currentThread().getName() + " continue");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-		}
+		ThreadA t2 = new ThreadA("t2");
+		t1.start();
+		t2.start();
 	}
 }

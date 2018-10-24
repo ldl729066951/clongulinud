@@ -72,7 +72,6 @@ public class Server {
 				e.printStackTrace();
 				Server.this.stop();
 			}
-
 		}
 	}
 
