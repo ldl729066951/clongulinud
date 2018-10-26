@@ -1,7 +1,4 @@
 package com.castor.arithmetic;
-
-import org.apache.xmlbeans.impl.regex.Match;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -12,7 +9,7 @@ public class Limohan {
 	public static void main(String[] args) {
 		//List<Double> arg = Arrays.asList(1.0,2.0,3.2,15.0,16.0,17.0,35.0,100.0,200.0,300.0);
 		//List<Result> res = test(arg, 33.0);
-		List<Double> arg = Arrays.asList(113.61,15.2,18.96,19.9,21.12,23.88,36.67,91.31,100.0, 20.0, 133.45,173.7,174.0,199.0,299.0,309.0);
+		List<Double> arg = Arrays.asList(113.61,15.2,18.96,19.9,21.12,23.88,36.67,91.31,133.45,173.7,174.0,199.0,299.0,309.0);
 		target = 120.0;
 		List<Result> res = test(arg);
 		System.out.println("result: " +res.toString());
@@ -66,31 +63,27 @@ public class Limohan {
 		System.out.println("--------------这是元素个数为："+i+"--------------");
 
 		List<Double> tmp = new ArrayList<>();
-		combine(smaller.size(), i, 0, smaller, res, tmp, true);
+		combine(smaller.size(), i, 0, smaller, res, tmp, true, i);
 
 	}
 
-	private static void combine(int cabSize, int getSize, double str ,final List<Double> arrays, List<Result> res, List<Double> tmp, boolean flag){
-		double distance = Double.MAX_VALUE;
-		if(res.size() > 0){
-			distance = res.get(0).getDistance();
-			System.out.println("-----------此时最小差距为："+ distance +"-----------------");
-		}
+	private static void combine(int cabSize, int getSize, double str ,final List<Double> arrays, List<Result> res, List<Double> tmp, boolean flag, final int k){
 
 		for(int i = cabSize; i >= getSize; i--){
 			if(getSize > 1){
 				tmp.add(arrays.get(i-1));
-				combine(i-1, getSize - 1, str+arrays.get(i-1), arrays, res, tmp, false);
+				combine(i-1, getSize - 1, str+arrays.get(i-1), arrays, res, tmp, false, k);
 			}else{
 				tmp.add(arrays.get(i-1));
 				double total = str + arrays.get(i - 1);
-				putRes(total - target, distance, tmp, res);
-				tmp.remove(tmp.size() - 1);
-				System.out.println( str + arrays.get(i - 1));
+				putRes(total - target, res.get(0).getDistance(), tmp, res);
+				System.out.println( str + "+" + arrays.get(i - 1) + " = " + (str + arrays.get(i - 1)));
 			}
 			if(flag)
 				tmp.clear();
-			System.out.println("-------------------------");
+			else
+				tmp.removeAll(tmp.subList(k - getSize , tmp.size()));
+			//System.out.println("-------------------------");
 		}
 	}
 
@@ -113,7 +106,6 @@ public class Limohan {
 			distance = res.get(0).getDistance();
 			System.out.println("-----------此时最小差距为："+ distance +"-----------------");
 		}
-
 		if(num == 0){
 			System.out.println("------------小于target的元素的总和 <= target, 不作处理----------------");
 			//putRes(total - target, distance, smaller, res);
@@ -130,7 +122,9 @@ public class Limohan {
 		if(now >= 0 && now <= distance){
 			if(now < distance)
 				res.clear();
-			res.add(new Result(now, list));
+			List<Double> thisList = new ArrayList<Double>(Arrays.asList(new Double[list.size()]));
+			Collections.copy(thisList,list);
+			res.add(new Result(now, thisList));
 			System.out.println("-----------------------------------------------------------------------------");
 			System.out.println("数据为："+ list.toString());
 			System.out.println("此次差距为："+ now);
