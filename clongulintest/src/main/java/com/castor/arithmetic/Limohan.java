@@ -8,20 +8,20 @@ import java.util.stream.Collectors;
 public class Limohan {
 
 	private static boolean isContinus = false;
-
+	private static double target = 0;
 	public static void main(String[] args) {
 		//List<Double> arg = Arrays.asList(1.0,2.0,3.2,15.0,16.0,17.0,35.0,100.0,200.0,300.0);
 		//List<Result> res = test(arg, 33.0);
-		List<Double> arg = Arrays.asList(113.61,15.2,18.96,19.9,21.12,23.88,36.67,91.31,133.45,173.7,174.0,199.0,299.0,309.0);
-		List<Result> res = test(arg, 120.0);
+		List<Double> arg = Arrays.asList(113.61,15.2,18.96,19.9,21.12,23.88,36.67,91.31,100.0, 20.0, 133.45,173.7,174.0,199.0,299.0,309.0);
+		target = 120.0;
+		List<Result> res = test(arg);
 		System.out.println("result: " +res.toString());
 	}
 
-	private static List<Result> test(List<Double> arg, Double target) {
+	private static List<Result> test(List<Double> arg) {
 		List<Result> res = new ArrayList<>();
 		Collections.sort(arg);
 		int maxSize = 0;
-		double tmp = target;
 		System.out.println("原序列----------------------------");
 		arg.forEach(p -> System.out.print(p + " , "));
 		System.out.println();
@@ -44,7 +44,7 @@ public class Limohan {
 			return res;
 		}
 		System.out.println("不存在直接满足条件的单个元素----------------------------");
-		maxSize = getMaxSize(target, smaller, res);
+		maxSize = getMaxSize(smaller, res);
 
 		if(isContinus == false){
 			return res;
@@ -55,25 +55,46 @@ public class Limohan {
 		System.out.println("--------------从2开始直到元素个数为 "+maxSize+"--------------");
 
 		for (int i= 2;i <= maxSize; i++){
-			whileToEnd(i, res, smaller, target);
+			whileToEnd(i, res, smaller);
 		}
 
 		return res;
 	}
 
-	private static void whileToEnd(int i, List<Result> res, List<Double> smaller, double target){
+	private static void whileToEnd(int i, List<Result> res, List<Double> smaller){
 
 		System.out.println("--------------这是元素个数为："+i+"--------------");
 
-		for (int j = smaller.size() -1; j >0; j--){
-			//if(smaller.get(j) + smaller[0])
-		}
-
+		List<Double> tmp = new ArrayList<>();
+		combine(smaller.size(), i, 0, smaller, res, tmp, true);
 
 	}
 
+	private static void combine(int cabSize, int getSize, double str ,final List<Double> arrays, List<Result> res, List<Double> tmp, boolean flag){
+		double distance = Double.MAX_VALUE;
+		if(res.size() > 0){
+			distance = res.get(0).getDistance();
+			System.out.println("-----------此时最小差距为："+ distance +"-----------------");
+		}
 
-	private static int getMaxSize(Double target, List<Double> smaller, List<Result> res){
+		for(int i = cabSize; i >= getSize; i--){
+			if(getSize > 1){
+				tmp.add(arrays.get(i-1));
+				combine(i-1, getSize - 1, str+arrays.get(i-1), arrays, res, tmp, false);
+			}else{
+				tmp.add(arrays.get(i-1));
+				double total = str + arrays.get(i - 1);
+				putRes(total - target, distance, tmp, res);
+				tmp.remove(tmp.size() - 1);
+				System.out.println( str + arrays.get(i - 1));
+			}
+			if(flag)
+				tmp.clear();
+			System.out.println("-------------------------");
+		}
+	}
+
+	private static int getMaxSize(List<Double> smaller, List<Result> res){
 		//寻找由小到大最多可以需要多少个数
 		int total = 0;
 		int num = 0;
@@ -105,11 +126,15 @@ public class Limohan {
 	}
 
 	private static void putRes(double now, double distance, List<Double> list, List<Result> res){
+		System.out.println("组合："+list.toString());
 		if(now >= 0 && now <= distance){
 			if(now < distance)
 				res.clear();
 			res.add(new Result(now, list));
-			System.out.println("-----------此时最小差距为："+ now +"-----------------");
+			System.out.println("-----------------------------------------------------------------------------");
+			System.out.println("数据为："+ list.toString());
+			System.out.println("此次差距为："+ now);
+			System.out.println("-----------此时最小差距为："+ now +"目前为O-----------------" + res.toString());
 		}
 	}
 
