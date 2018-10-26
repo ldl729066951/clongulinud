@@ -12,6 +12,8 @@ public class Limohan {
 		List<Double> arg = Arrays.asList(113.61,15.2,18.96,19.9,21.12,23.88,36.67,91.31,133.45,173.7,174.0,199.0,299.0,309.0);
 		target = 120.0;
 		List<Result> res = test(arg);
+        System.out.println("-------------------------------------结论--------------------------------");
+        System.out.println("共计算："+ count +" 次");
 		System.out.println("result: " +res.toString());
 	}
 
@@ -51,7 +53,7 @@ public class Limohan {
 
 		System.out.println("--------------从2开始直到元素个数为 "+maxSize+"--------------");
 
-		for (int i= 2;i <= maxSize; i++){
+		for (int i= 3;i <= maxSize; i++){
 			whileToEnd(i, res, smaller);
 		}
 
@@ -66,18 +68,31 @@ public class Limohan {
 		combine(smaller.size(), i, 0, smaller, res, tmp, true, i);
 
 	}
-
+private static int count = 0;
 	private static void combine(int cabSize, int getSize, double str ,final List<Double> arrays, List<Result> res, List<Double> tmp, boolean flag, final int k){
-
+        int j = 0;
 		for(int i = cabSize; i >= getSize; i--){
 			if(getSize > 1){
 				tmp.add(arrays.get(i-1));
-				combine(i-1, getSize - 1, str+arrays.get(i-1), arrays, res, tmp, false, k);
+                double tmpTotal = str+arrays.get(i-1);
+                if(tmpTotal < target * (k + 1 -getSize) / k ){
+                    break;
+                }
+				combine(i-1, getSize - 1, tmpTotal, arrays, res, tmp, false, k);
 			}else{
-				tmp.add(arrays.get(i-1));
-				double total = str + arrays.get(i - 1);
+			    count++;
+				tmp.add(arrays.get(j));
+				double total = str + arrays.get(j);
+				if(total - target > res.get(0).getDistance()){
+                    if(flag)
+                        tmp.clear();
+                    else
+                        tmp.removeAll(tmp.subList(k - getSize , tmp.size()));
+				    break;
+                }
 				putRes(total - target, res.get(0).getDistance(), tmp, res);
-				System.out.println( str + "+" + arrays.get(i - 1) + " = " + (str + arrays.get(i - 1)));
+				System.out.println( str + "+" + arrays.get(j) + " = " + (str + arrays.get(i - 1)));
+				j++;
 			}
 			if(flag)
 				tmp.clear();
