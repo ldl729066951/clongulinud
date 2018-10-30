@@ -9,9 +9,12 @@ public class Limohan {
 	public static void main(String[] args) {
 		//List<Double> arg = Arrays.asList(1.0,2.0,3.2,15.0,16.0,17.0,35.0,100.0,200.0,300.0);
 		//List<Result> res = test(arg, 33.0);
-		List<Double> arg = Arrays.asList(113.61,15.2,18.96,19.9,21.12,23.88,36.67,91.31,133.45,173.7,174.0,199.0,299.0,309.0);
+		long start = System.currentTimeMillis();
+		List<Double> arg = Arrays.asList(113.61 , 15.2 , 18.952 , 18.951 , 100.0 , 1.050 ,18.950, 19.9 , 21.12 , 23.88 , 36.67 , 91.31 , 133.45 , 173.7 , 174.0 , 199.0 , 299.0 , 309.0, 100.0, 20.0);//Arrays.asList(113.61,15.2,18.96,19.9,21.12,23.88,36.67,91.31,133.45,173.7,174.0,199.0,299.0,309.0);
 		target = 120.0;
 		List<Result> res = test(arg);
+		long cost = System.currentTimeMillis() - start;
+		System.out.println( "用时======>" + cost + "ms" );
         System.out.println("-------------------------------------结论--------------------------------");
         System.out.println("共计算："+ count +" 次");
 		System.out.println("result: " +res.toString());
@@ -53,7 +56,7 @@ public class Limohan {
 
 		System.out.println("--------------从2开始直到元素个数为 "+maxSize+"--------------");
 
-		for (int i= 3;i <= maxSize; i++){
+		for (int i= 2;i <= maxSize; i++){
 			whileToEnd(i, res, smaller);
 		}
 
