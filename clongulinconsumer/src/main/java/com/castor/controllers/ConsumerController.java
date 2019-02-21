@@ -25,8 +25,7 @@ public class ConsumerController {
 	@Value("${active}")
 	private String active;
 
-	@Autowired
-	DemoController demoController;
+
 
 	@GetMapping("/consume")
 	public Object consume(){
