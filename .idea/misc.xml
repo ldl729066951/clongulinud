@@ -11,6 +11,8 @@
         <option value="$PROJECT_DIR$/clongulineureka/pom.xml" />
         <option value="$PROJECT_DIR$/clongulinconsumer/pom.xml" />
         <option value="$PROJECT_DIR$/clongulinconfig/pom.xml" />
+        <option value="$PROJECT_DIR$/clongulintest/pom.xml" />
+        <option value="$PROJECT_DIR$/clongulinzuul/pom.xml" />
       </list>
     </option>
   </component>
