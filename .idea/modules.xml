@@ -6,7 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/clongulinconfig/clongulinconfig.iml" filepath="$PROJECT_DIR$/clongulinconfig/clongulinconfig.iml" />
       <module fileurl="file://$PROJECT_DIR$/clongulinconsumer/clongulinconsumer.iml" filepath="$PROJECT_DIR$/clongulinconsumer/clongulinconsumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/clongulineureka/clongulineureka.iml" filepath="$PROJECT_DIR$/clongulineureka/clongulineureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clongulintest/clongulintest.iml" filepath="$PROJECT_DIR$/clongulintest/clongulintest.iml" />
       <module fileurl="file://$PROJECT_DIR$/clongulinud.iml" filepath="$PROJECT_DIR$/clongulinud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clongulinzuul/clongulinzuul.iml" filepath="$PROJECT_DIR$/clongulinzuul/clongulinzuul.iml" />
     </modules>
   </component>
 </project>

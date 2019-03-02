@@ -10,6 +10,8 @@
         <module name="clongulinconfig" />
         <module name="clongulinconsumer" />
         <module name="clongulineureka" />
+        <module name="clongulintest" />
+        <module name="clongulinzuul" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -18,7 +20,9 @@
       <module name="clongulinconsumer" target="1.8" />
       <module name="clongulineureka" target="1.8" />
       <module name="clongulineurekaReplicas" target="1.8" />
+      <module name="clongulintest" target="1.8" />
       <module name="clongulinud" target="1.8" />
+      <module name="clongulinzuul" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="SbtSettings">
