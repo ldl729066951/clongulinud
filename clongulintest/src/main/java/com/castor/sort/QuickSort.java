@@ -12,10 +12,52 @@ public class QuickSort {
 
     public static void main(String[] args){
         int[] a ={49,38,65,97,76,13,27,49,78,34,12,64,5,4,62,99,98,54,56,17,18,23,34,15,35,25,53,51};
-        quickSort(a, 0, a.length-1);
+        quickSort2(a, 0, a.length-1);
         for(int j:a)
             System.out.print(j+" ");
     }
+
+    public static int partition(int[] a, int s_start, int s_end){
+
+        int i = s_start + 1;
+        int j = s_end;
+        int key = a[s_start];
+        int tmp;
+
+        while(true){
+            while(i<j && a[i] <= key) i++;
+            while(i<j && a[j] >= key) j--;
+
+            if(i >= j) break;
+
+            tmp = a[j];
+            a[j] = a[i];
+            a[i] = tmp;
+
+        }
+        if(a[j] < key){
+            a[s_start] = a[j];
+            a[j] = key;
+        }
+        return j;
+    }
+
+  public static void quickSort2(int[] a, int s_start, int s_end) {
+        if(s_start < s_end){
+            int center = partition(a, s_start,s_end);
+            if(s_start < center){
+                System.out.println("OOO::start:"+s_start + ",end:"+s_end + ", " + s_start + "::" + (center -1));
+                quickSort2(a, s_start, center -1);
+            }
+            if(center < s_end){
+                System.out.println("PPP::start:"+s_start + ",end:"+s_end + ", "   + (center +1) + "::" + s_end);
+                quickSort2(a, center+1 , s_end);
+            }
+
+        }
+
+
+  }
 
     public static void quickSort(int[] a, int s_start, int s_end){
         int start = s_start;
